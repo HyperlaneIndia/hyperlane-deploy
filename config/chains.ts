@@ -1,9 +1,41 @@
-import { ChainMap, ChainMetadata, ProtocolType } from '@hyperlane-xyz/sdk';
+import { ChainMap, ChainMetadata, ExplorerFamily, ProtocolType } from '@hyperlane-xyz/sdk';
 
 // import { chainMetadata } from '@hyperlane-xyz/sdk';
 // A map of chain names to ChainMetadata
 export const chains: ChainMap<ChainMetadata> = {
   // ----------- Add your chains here -----------------
+  polygonzkevm: {
+    name: 'polygonzkevm',
+    chainId: 1101,
+    domainId: 1101,
+    protocol: ProtocolType.Ethereum,
+    displayName: 'Polygon zkEVM',
+    displayNameShort: 'Polygon zkEVM',
+    nativeToken: {
+      name: 'ether',
+      symbol: 'ETH',
+      decimals: 18,
+    },
+    rpcUrls: [
+      {
+        http: 'https://zkevm-rpc.com',
+      },
+    ],
+    blockExplorers: [
+      {
+        name: 'Polygon Scan',
+        url: 'https://zkevm.polygonscan.com',
+        apiUrl: 'https://api-zkevm.polygonscan.com/api',
+        family: ExplorerFamily.Etherscan
+      },
+    ],
+    isTestnet: false,
+    blocks: {
+      confirmations: 1,
+      reorgPeriod: 0,
+      estimateBlockTime: 5,
+    }
+  },
   anvil1: {
     name: 'anvil1',
     protocol: ProtocolType.Ethereum,
